@@ -1,35 +1,13 @@
+# ASP.NET Core
+# Build and test ASP.NET Core projects targeting .NET Core.
+# Add steps that run tests, create a NuGet package, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
 trigger:
-- main
- 
+- master
+
 pool:
-vmImage: ubuntu-latest
- 
+  vmImage: ubuntu-latest
+
 stages:
-- stage: Test
-jobs:
-- job: test
-steps:
-- script: echo testing app
- 
-- stage: DeployUS1
-dependsOn: Test # this stage runs after Test
-jobs:
-- job: deploy_us1
-steps:
-- script: echo deploying to US1
- 
-- stage: DeployUS2
-dependsOn: Test # this stage runs in parallel with DeployUS1, after Test
-jobs:
-- job: deploy_us2
-steps:
-- script: echo deploying to US2
- 
-- stage: DeployEurope
-dependsOn: # this stage runs after DeployUS1 and DeployUS2
-- DeployUS1
-- DeployUS2
-jobs:
-- job: deploy_europe
-steps:
-- script: echo deploying to Europe
+    - stage: Test
