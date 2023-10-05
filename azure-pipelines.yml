@@ -22,16 +22,16 @@ variables:
 jobs:
 - job: Work
   steps:
-#  - script: dotnet build --configuration $(buildConfiguration)
-#    displayName: 'dotnet build $(buildConfiguration)'
+  - script: dotnet build --configuration $(buildConfiguration)
+    displayName: 'dotnet build $(buildConfiguration)'
 
   - script: echo Hello, world!
     displayName: 'Run a one-line script'
     
   # This malformed command causes the job to fail
   # Only run this command if the succeed variable is set to false
-  - script: git clone malformed input
-    condition: eq(${{ parameters.succeed }}, false)
+  #- script: git clone malformed input
+  #  condition: eq(${{ parameters.succeed }}, false)
 
 # This job creates a work item, and only runs if the previous job failed
 - job: ErrorHandler
