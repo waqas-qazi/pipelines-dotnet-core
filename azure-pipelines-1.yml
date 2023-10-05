@@ -7,7 +7,11 @@ trigger:
 - master
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: "ubuntu-latest"
 
 stages:
-    - stage: Test
+    - stage: "Test"
+jobs:
+-  job: "test"
+steps:
+- script: "echo testing app"
